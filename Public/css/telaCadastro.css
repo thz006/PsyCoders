@@ -1,3 +1,56 @@
-body{
-    background-color: red;
+
+.task001-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #FFDEE5 0%, #FFDFB0 50%, #FFD9A3 100%);
+}
+.task001-logo{
+    display: flex;
+    margin-bottom: 20%;
+    width: 50%;
+ }
+.task001-title{
+    font-size: 48px;
+}
+
+.task001-subtitle{
+    display: flex;
+    text-align: center;
+    font-size: 16px;
+    width: 80%;
+    margin-top: 5%;
+}
+.task001-container-inputs{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
+.task001-input-box {
+    margin-bottom: 10px;
+    border-radius: 2px;
+    height: 30%;
+    border: none;
+    height: 100%;
+}
+.task001-inputs{
+    display: flex;
+    border: none;
+    height: 20px;
+}
+.task001-ja-possui-conta{
+    display: flex;
+    margin-bottom: 30%;
+    font-size: 17px;
+}
+.task001-button-cadastrar{
+    display: flex;
+    border-radius: 2px;
+    border: none;
+}
+
+.task001-button-cadastrar::placeholder{
+    text-align: center;
 }

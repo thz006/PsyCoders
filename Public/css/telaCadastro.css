@@ -1,7 +1,4 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+.task001-body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(180deg, #FFE1B0 0%, #FFD9A3 50%, #FFD1E3 100%);
   }

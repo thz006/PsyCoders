@@ -10,15 +10,19 @@ include __DIR__.'/../../Public/includes/header.php';
     você precisa, na hora que você quer</h2>
     <form class="task001-container-inputs">
         <div class="task001-input-box">
+            <i class="fa-solid fa-user task001-input-icon"></i>
             <input type="text" name="task001-input-1" class="task001-inputs" placeholder="Usuario">
         </div>
         <div class="task001-input-box">
+            <i class="fa-solid fa-at task001-input-icon"></i>
             <input type="text" name="task001-input-2" class="task001-inputs" placeholder="email">
         </div>
         <div class="task001-input-box">
+            <i class="fa-solid fa-lock task001-input-icon"></i>
             <input type="password" name="task001-input-3" class="task001-inputs" placeholder="Senha">
         </div>
         <div class="task001-input-box">
+            <i class="fa-solid fa-lock task001-input-icon"></i>
             <input type="password" name="task001-input-3" class="task001-inputs" placeholder="ConfSenha">
         </div>
         <button class="task001-button-cadastrar">Cadastrar</button>

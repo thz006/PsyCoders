@@ -1,56 +1,140 @@
-
-.task001-container {
-    height: 100vh;
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(180deg, #FFE1B0 0%, #FFD9A3 50%, #FFD1E3 100%);
+  }
+  
+  .task001-container {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #FFDEE5 0%, #FFDFB0 50%, #FFD9A3 100%);
-}
-.task001-logo{
-    display: flex;
-    margin-bottom: 20%;
+  }
+  
+  .task001-logo {
     width: 50%;
- }
-.task001-title{
-    font-size: 48px;
-}
-
-.task001-subtitle{
-    display: flex;
+    margin-bottom: 10%;
+  }
+  
+  .task001-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #111;
+  }
+  
+  .task001-subtitle {
+    font-size: 1rem;
+    color: #444;
     text-align: center;
-    font-size: 16px;
-    width: 80%;
-    margin-top: 5%;
-}
-.task001-container-inputs{
+    margin-bottom: 32px;
+    max-width: 320px;
+  }
+  
+  .task001-container-inputs {
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
-}
-.task001-input-box {
-    margin-bottom: 10px;
-    border-radius: 2px;
-    height: 30%;
+    gap: 14px;
+    width: 100%;
+    max-width: 260px;
+  }
+  
+  .task001-input-box {
+    position: relative;
+    width: 100%;
+  }
+  
+  .task001-inputs {
+    width: 100%;
+    padding: 10px 12px 10px 38px;
     border: none;
-    height: 100%;
-}
-.task001-inputs{
-    display: flex;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+    color: #222;
+    box-shadow: 0 1px 2px #0001;
+    outline: none;
+    transition: border 0.2s;
+  }
+  
+  .task001-inputs:focus {
+    border: 1.5px solid #FF7900;
+  }
+  
+  .task001-input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.1rem;
+  }
+  
+  .task001-button-cadastrar {
+    margin-top: 10px;
+    padding: 12px;
+    width: 100%;
+    background: #FF7900;
+    color: #fff;
+    font-weight: bold;
     border: none;
-    height: 20px;
-}
-.task001-ja-possui-conta{
-    display: flex;
-    margin-bottom: 30%;
-    font-size: 17px;
-}
-.task001-button-cadastrar{
-    display: flex;
-    border-radius: 2px;
-    border: none;
-}
-
-.task001-button-cadastrar::placeholder{
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px #ff790033;
+  }
+  
+  .task001-button-cadastrar:hover {
+    background: #e86c00;
+  }
+  
+  .task001-ja-possui-conta {
+    margin-top: 18px;
+    font-size: 1rem;
+    color: #333;
     text-align: center;
-}
+  }
+  
+  .task001-ir-para-login {
+    margin-left: 4px;
+    color: #FF7900;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+  }
+  
+  .task001-ir-para-login:hover {
+    color: #e86c00;
+  }
+
+  .task001-input-box {
+    position: relative;
+    width: 100%;
+  }
+  
+  .task001-input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #222;
+    font-size: 1.1rem;
+    pointer-events: none;
+  }
+  
+  .task001-inputs {
+    width: 100%;
+    padding: 10px 12px 10px 38px; /* espaço à esquerda para o ícone */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+    color: #222;
+    box-shadow: 0 1px 2px #0001;
+    outline: none;
+    transition: border 0.2s;
+  }

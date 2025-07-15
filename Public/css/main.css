@@ -1,9 +1,8 @@
 @import url(telaCadastro.css);
-
+@import url(telaLogin.css);
 /* CSS reset geral. */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }

@@ -6,6 +6,7 @@
     align-items: center;
     flex-direction: column;
     background: linear-gradient(45deg, #FFDEE5, #FFDFB0, #FFDEAE, #FFD9A3);
+    position: relative;
 }
 
 .areaLogin{
@@ -26,6 +27,11 @@
     gap: 5px;
     animation: mecher 5s ease infinite;
 }
+
+.areaLogin h1 span{
+    font-weight: 400;
+}
+
 @keyframes mecher {
     0% {
         transform: scale(1) rotate(0deg);
@@ -46,11 +52,13 @@
     font-size: 70px ;
 }
 
-.areaLogin p{
+.areaLogin .loginWelcome{
     width: 250px;
     display: flex;
     text-align: center;
     font-size: 18px;
+    color: #444444;
+    font-weight: 400;
 }
 
 .formLogin{
@@ -71,19 +79,23 @@
     justify-content: start;
     align-items: center;
     text-align: start;
-    padding: 3px;
+    padding: 7px;
     border: none;
     background-color: white;
     gap: 10px;
 }
 .areaInput i{
     bottom: 20px;
+    color: #444444;
     font-size: 22px;
 }
+
 .formLogin input[type="email"], .formLogin input[type="password"]{
     border: none;
     background-color: transparent;
     /* background-color: #FF7A00; */
+    color: #989898;
+    font-weight: 500;
     width: 80%;
 }   
 
@@ -97,5 +109,18 @@
     height: 40px;
     border-radius: 5px;
     border: none;
-    background-color: #FF7A00;
+}
+
+.loginInfo{
+    display: unset;
+    width: unset;
+    height: unset;
+    white-space: nowrap;
+    color: #444444;
+    font-weight: 600;
+}
+
+.loginInfo a{
+    color: #FF7703;
+    text-decoration: none;
 }

@@ -23,7 +23,7 @@
 
         <div class="telaInicial-buttons">
 
-            <a href="" class="botao-lg">Cadastrar-se</a>
+            <a href="telaCadastro.php" class="botao-lg">Cadastrar-se</a>
             <a href="telaLogin.php" class="botao-lg">Logar</a>
         
         </div>

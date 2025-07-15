@@ -20,7 +20,7 @@ include '../../Public/includes/header.php';
            
            
             <input class="botao-lg" type="submit" value="Fazer Login">
-            <p class="loginInfo">Não tem uma conta? <a href="">Cadastrar</a></p>
+            <p class="loginInfo">Não tem uma conta? <a href="telaCadastro.php">Cadastrar</a></p>
         </form>
     </section>
 </body>

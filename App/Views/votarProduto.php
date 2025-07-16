@@ -112,7 +112,7 @@ include '../../Public/includes/header.php';
 
 	<section class="rankingVotadores">
 		<div class="rankingVotadores-container">
-			<h2>Ranking Votadores</h2>
+			<h2>Ranking Mais Votados</h2>
 			<table class="rankingVotadores-tabela">
 				<thead style="display: none;">
 					<tr>

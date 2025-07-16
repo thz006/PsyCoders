@@ -9,11 +9,11 @@
 <body class="navbar">
 
 <nav>
-  <div class="logo-container">
+  <div class="logo-nav">
     <img src="../../Public/img/logo.avif" alt="Logo Buy at Home" />
-    <p>Buy</p>
-    <span>At</span>
-    <p>Home</p>
+    <p class="logo-text1">Buy</p>
+    <span class="logo-text2">At</span>
+    <p class="logo-text1">Home</p>
   </div>
 
   <div class="menu" id="menu">

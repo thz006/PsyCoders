@@ -1,27 +1,36 @@
 <?php
-include '../../Public/includes/header.php';
-?>
-<title>Tela Login</title>
-<body class="bodyLogin">
-    <a href="telaInicial.php" class="botao-voltar"><i class="fa-solid fa-angle-left"></i>Voltar</a>
-    <section class="areaLogin">
-        <h1><img src="../../Public/img/logo_mg.png" alt="">Buy<span>At</span>Home</h1>
-        <h2>Login</h2>
-        <p class="loginWelcome">Entre em sua conta para ter
-        acesso a conteudos incríveis!</p>
+// App/Views/telaLogin.php
 
-        <form action="" class="formLogin">
-            <div class="areaInput">
-                <i class="fa-solid fa-at"></i><input type="email" name="" placeholder="email">
+// Inclui o cabeçalho comum
+include __DIR__.'/../../Public/includes/header.php';
+?>
+
+<body class="task001-body">
+    <!-- Caixa de mensagens customizada -->
+    <div id="messageBox">
+        <span id="messageText"></span>
+        <button id="closeMessageBox">&times;</button>
+    </div>
+
+    <a href="telaInicial.php" class="botao-voltar"><i class="fa-solid fa-angle-left"></i>Voltar</a>
+    <div class="task001-container">
+        <h1 class="task001-logo-text"><img src="../../Public/img/logo_mg.png" alt="">Buy<span>At</span>Home</h1>
+        <h1 class="task001-title">Login</h1>
+        <h2 class="task001-subtitle">Acesse sua conta para continuar</h2>
+        <form class="formLogin">
+            <div class="task001-input-box">
+                <i class="fa-solid fa-at task001-input-icon"></i>
+                <input type="email" name="email" class="task001-inputs" placeholder="Email" required>
             </div>
-            <div class="areaInput">
-                <i class="fa-solid fa-lock"></i><input type="password" name="" placeholder="senha">
+            <div class="task001-input-box">
+                <i class="fa-solid fa-lock task001-input-icon"></i>
+                <input type="password" name="password" class="task001-inputs" placeholder="Senha" required>
             </div>
-           
-           
-            <input class="botao-lg" type="submit" value="Fazer Login">
-            <p class="loginInfo">Não tem uma conta? <a href="telaCadastro.php">Cadastrar</a></p>
+
+            <button type="submit" class="botao-lg">Entrar</button>
         </form>
-    </section>
+        <h2 class="task001-ja-possui-conta">Não tem uma conta?<a href="telaCadastro.php" class="task001-ir-para-login">Cadastre-se.</a></h2>
+    </div>
+    <script src="../../Public/js/login.js"></script>
 </body>
 </html>

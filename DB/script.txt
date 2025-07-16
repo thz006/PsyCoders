@@ -1,4 +1,4 @@
-create database psycoders;
+
 use psycoders;
 CREATE TABLE `Funcionarios` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT,

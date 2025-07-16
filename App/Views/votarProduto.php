@@ -110,4 +110,44 @@ include '../../Public/includes/header.php';
 
 	</section>
 
+	<section class="rankingVotadores">
+		<div class="rankingVotadores-container">
+			<h2>Ranking Votadores</h2>
+			<table class="rankingVotadores-tabela">
+				<thead style="display: none;">
+					<tr>
+					<th>Usuário</th>
+					<th>Quantidade de Votos</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td class="td1">Fandangos</td>
+					<td class="td2">154 votos</td>
+					</tr>
+					<tr>
+					<td class="td1">Cheetos</td>
+					<td class="td2">139 votos</td>
+					</tr>
+					<tr>
+					<td class="td1">Doritos</td>
+					<td class="td2">127 votos</td>
+					</tr>
+					<tr>
+					<td class="td1">Baconzitos</td>
+					<td class="td2">114 votos</td>
+					</tr>
+					<tr>
+					<td class="td1">Cebolitos</td>
+					<td class="td2">99 votos</td>
+					</tr>
+					<tr>
+					<td class="td1">Ruffles</td>
+					<td class="td2">27 votos</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
 </body>

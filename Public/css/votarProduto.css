@@ -107,6 +107,7 @@
 .rankingVotadores-tabela {
     /* width: 100%; */
 	width: 50%;
+	background-color: white;
     border-collapse: separate;
 	border-spacing: 2px 10px;
     font-family: 'Arial', sans-serif;

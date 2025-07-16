@@ -1,25 +1,26 @@
 // Public/js/login.js
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('.formLogin');
-    const loginButton = document.querySelector('.botao-lg');
     const messageBox = document.getElementById('messageBox');
     const messageText = document.getElementById('messageText');
     const closeMessageBox = document.getElementById('closeMessageBox');
 
-    // Function to display messages in a custom modal
     function showMessage(message, isSuccess = false) {
-        messageText.textContent = message;
-        messageBox.style.backgroundColor = isSuccess ? '#4CAF50' : '#f44336'; // Green for success, Red for error
-        messageBox.classList.add('show'); // Add class to trigger opacity transition
-        messageBox.style.display = 'block';
-        
-        // Hide after 5 seconds
-        setTimeout(() => {
-            messageBox.classList.remove('show');
+        if (messageText && messageBox) {
+            messageText.textContent = message;
+            messageBox.style.backgroundColor = isSuccess ? '#4CAF50' : '#f44336';
+            messageBox.classList.add('show');
+            messageBox.style.display = 'block';
             setTimeout(() => {
-                messageBox.style.display = 'none';
-            }, 300); // Allow transition to finish before hiding display
-        }, 5000);
+                messageBox.classList.remove('show');
+                setTimeout(() => {
+                    messageBox.style.display = 'none';
+                }, 300);
+            }, 5000);
+        } else {
+            alert(message);
+        }
     }
 
     if (closeMessageBox) {
@@ -27,76 +28,41 @@ document.addEventListener('DOMContentLoaded', () => {
             messageBox.classList.remove('show');
             setTimeout(() => {
                 messageBox.style.display = 'none';
-            }, 300); // Allow transition to finish before hiding display
+            }, 300);
         });
     }
 
-    // Verifica se os elementos existem antes de adicionar o event listener
-    if (loginForm && loginButton) {
+    if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Impede o envio padrão do formulário
+            e.preventDefault();
+            const email = document.querySelector('input[name="email"]').value.trim();
+            const password = document.querySelector('input[name="password"]').value;
 
-            // Coleta os valores dos campos do formulário
-            const email = document.querySelector('.formLogin input[name="email"]').value;
-            const password = document.querySelector('.formLogin input[name="password"]').value;
-
-            // Validações básicas no frontend
             if (!email || !password) {
-                showMessage('Por favor, preencha o e-mail e a senha.');
+                showMessage('Por favor, preencha todos os campos.');
                 return;
             }
 
             try {
-                // CORREÇÃO CRÍTICA: Use o caminho ABSOLUTO para o controlador PHP
-                // Assumindo que 'PsyCoders' é a pasta raiz do seu projeto no localhost
-                const response = await fetch('/PsyCoders/App/Controllers/AuthController.php?action=login', {
+                const response = await fetch('/PsyCoders/App/Controller/AuthController.php?action=login', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
                 });
-
-                // Verifica se a resposta HTTP foi bem-sucedida (status 2xx)
-                if (!response.ok) {
-                    let errorData;
-                    try {
-                        errorData = await response.json();
-                    } catch (jsonError) {
-                        const errorText = await response.text();
-                        console.error('HTTP Error (Non-JSON Response):', response.status, response.statusText, errorText);
-                        showMessage(`Erro do servidor: ${response.status} ${response.statusText}. Verifique o console para mais detalhes.`);
-                        return;
-                    }
-                    console.error('HTTP Error (JSON Response):', response.status, response.statusText, errorData);
-                    showMessage(errorData.message || `Erro do servidor: ${response.status} ${response.statusText}.`);
-                    return;
-                }
-
-                // Converte a resposta do servidor para JSON
                 const data = await response.json();
-
-                // Manipula a resposta do servidor
-                if (data.success) {
-                    showMessage(data.message, true); // Pass true for success message
-                    if (data.redirect) {
-                        // Adicionar um pequeno atraso antes do redirecionamento
-                        setTimeout(() => {
-                            window.location.href = data.redirect; // Redireciona para a página de sucesso (telaInicial.php)
-                        }, 1500); // 1.5 seconds delay
-                    }
+                if (response.ok && data.success) {
+                    showMessage(data.message, true);
+                    setTimeout(() => {
+                        window.location.href = data.redirect || 'telaInicial.php';
+                    }, 1200);
                 } else {
-                    showMessage(data.message); // Exibe a mensagem de erro do servidor
+                    showMessage(data.message || 'Erro ao fazer login.');
                 }
             } catch (error) {
-                console.error('Erro na requisição de login:', error);
-                showMessage('Ocorreu um erro ao tentar fazer login. Por favor, tente novamente.');
+                showMessage('Erro de conexão com o servidor.');
             }
         });
     } else {
-        console.warn('Formulário de login ou botão não encontrados. Verifique os seletores CSS.');
+        console.warn('Formulário de login não encontrado.');
     }
-});
+}); 

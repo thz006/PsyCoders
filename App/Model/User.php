@@ -157,4 +157,26 @@ class User {
             return false;
         }
     }
+
+    /**
+     * Cria um usuário a partir de um objeto de requisição (stdClass)
+     * @param object $data
+     * @return true|string true em caso de sucesso, mensagem de erro em caso de falha
+     */
+    public static function createFromRequest($data) {
+        try {
+            $user = new self();
+            $user->username = $data->username;
+            $user->email = $data->email;
+            $user->password = password_hash($data->password, PASSWORD_DEFAULT);
+            if ($user->create()) {
+                return true;
+            } else {
+                return 'Erro ao inserir usuário no banco.';
+            }
+        } catch (\Throwable $e) {
+            error_log('Erro ao criar usuário: ' . $e->getMessage());
+            return 'Erro inesperado: ' . $e->getMessage();
+        }
+    }
 }

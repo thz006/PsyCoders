@@ -1,0 +1,51 @@
+.sessaoEditEnquete {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.formEditarEnquete {
+    background-color: transparent;
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    border: 1px solid #000000;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.areaEditarEnquete {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.areaEditarEnquete input[type="text"],
+.areaEditarEnquete input[type="datetime-local"] {
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    background-color: transparent;
+    padding: 10px;
+}
+
+.areaEditarEnquete input:focus {
+    outline: none;
+}
+
+.formEditarEnquete input[type="submit"] {
+    margin-top: 3rem;
+    width: 150px;
+    height: 30px;
+}

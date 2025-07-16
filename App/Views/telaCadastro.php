@@ -3,6 +3,7 @@ include __DIR__.'/../../Public/includes/header.php';
 ?>
 
 <body class="task001-body">
+<a href="telaInicial.php" class="botao-voltar"><i class="fa-solid fa-angle-left"></i>Voltar</a>
   <div class="task001-container">
     <h1 class="task001-logo-text"><img src="../../Public/img/logo_mg.png" alt="">Buy<span>At</span>Home</h1>
     <h1 class="task001-title">Cadastrar</h1>

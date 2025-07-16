@@ -1,0 +1,243 @@
+.mainAdm{
+    width: 100vw;
+    height: 100%;
+    background: linear-gradient(to bottom, #ebd5da, #cfcdae, #edd3eb, #ede0ce);
+    /* background-color: #f0eaca; */
+    position: relative;
+}
+.titleAdm{
+    margin-top: 5rem;
+}
+.sessaoAddProduto{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.descAdm{
+    width: 250px;
+    font-weight: 400;
+}
+
+
+.formCriarVotacao{
+    background-color: transparent;
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    border: 1px solid #000000;
+    padding: 2rem;
+    border-radius: 10px;
+}   
+
+.areaInsertVotacoes{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center ;
+}
+.areaInsertVotacoes input{
+    width: 200px;
+    border: none;
+    border-bottom:1px solid #000000;
+    background-color: transparent;
+    padding: 10px;
+}
+
+.areaInsertVotacoes input:focus{
+    outline: none;
+}
+
+.formCriarProduto{
+    background-color: transparent;
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    border: 1px solid #000000;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.areaInserirProdutos{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center ;
+}
+
+.areaInserirProdutos input{
+    width: 200px;
+    border: none;
+    border-bottom:1px solid #000000;
+    background-color: transparent;
+    padding: 10px;
+}
+
+.areaInserirProdutos input:focus{
+    outline: none;
+}
+
+.inserirImgAdm{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: 1px dashed #000000;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.areaImgAdm{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #000000;
+    overflow: hidden;
+}
+
+.areaImgAdm img{
+    width: 100%;
+    height: auto;
+}
+
+.inserirImgAdm input[type="file"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.inserirImgAdm i{
+    font-size: 30px;
+}
+
+.tabelaWrapper {
+    width: 300px;
+    overflow-x: auto;
+}
+
+/* Atualize sua tabela para forçar o scroll */
+.tabelaProdutos {
+    min-width: 500px; /* maior que o wrapper para forçar rolagem */
+    border-collapse: collapse;
+    background-color: transparent;
+    font-size: 0.85rem;
+}
+.tabelaProdutos thead {
+    background-color: transparent;
+    color: #000000;
+}
+
+.tabelaProdutos th, 
+.tabelaProdutos td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+    word-wrap: break-word;
+}
+
+.tabelaProdutos tbody tr:hover {
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.btnEditar, .btnExcluir {
+    width: 70px;
+    height: 20px;
+    margin-bottom: 5px;
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.btnEditar {
+    background-color: #ffc107;
+    color: #000;
+    margin-right: 0.3rem;
+}
+
+.btnExcluir {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+
+.alertAdm{
+    font-size: 12px;
+    color: red;
+}
+
+
+.tabelaWrapper {
+    width: 300px;
+    overflow-x: auto;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.tabelaEnquete {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    min-width: 600px; /* garante rolagem em telas pequenas */
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: transparent;
+}
+
+.tabelaEnquete thead {
+    background-color: transparent;
+    color: #000000;
+}
+
+.tabelaEnquete th,
+.tabelaEnquete td {
+    padding: 0.6rem;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+
+.imgTabela {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+}
+
+
+
+.formCriarProduto input[type="submit"]{
+    margin-top: 3rem;
+    width: 150px;
+    height: 30px;
+}
+
+.formCriarVotacao input[type="submit"]{
+    margin-top: 3rem;
+    width: 150px;
+    height: 30px;
+
+}

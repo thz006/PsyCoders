@@ -1,6 +1,3 @@
-console.log("Olá")
-
-
 const imgInp = document.getElementById('imgInput')
 const blah = document.getElementById('previewImg')
 

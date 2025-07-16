@@ -66,4 +66,16 @@ class VotacaoModel {
         
         return $sucesso;
     }
+    public static function findAllWithProducts(): array
+    {
+        $db = new Database(); 
+        $stmt = $db->selectAllVotacoesComProdutos(); 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function delete(int $id): bool
+    {
+        $db = new Database('Votacoes');
+        return $db->delete("id = ?", [$id]);
+    }
 }

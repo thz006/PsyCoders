@@ -2,7 +2,7 @@
     require_once __DIR__ . '/../../App/Model/Produto.php';
     require_once __DIR__ . '/../../App/Model/Votacao.php';
     $produtos = Produto::findAll();
-    // $votacoes = VotacaoModel::findAllWithProducts();
+    $votacoes = VotacaoModel::findAllWithProducts();
 ?>
 <?php
     include '../../Public/includes/header.php';
@@ -132,12 +132,36 @@
             <h1 class="titleAdm">Enquetes Criadas</h1>
             <div class="tabelaWrapper">
                 <table class="tabelaEnquete">
-                    <!-- O conteúdo desta tabela pode ser gerado dinamicamente no futuro -->
+                    <thead>
+                        <tr>
+                            <th>Título</th><th>Descrição</th><th>Início</th><th>Fim</th><th>Produtos na Votação</th><th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <?php
+                            if (!empty($votacoes)) {
+                                foreach ($votacoes as $votacao) {
+                                    echo "<tr>";
+                                    echo "<td>" . htmlspecialchars($votacao['titulo']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($votacao['descricao']) . "</td>";
+                                    echo "<td>" . htmlspecialchars(date('d/m/Y H:i', strtotime($votacao['data_inicio']))) . "</td>";
+                                    echo "<td>" . htmlspecialchars(date('d/m/Y H:i', strtotime($votacao['data_fim']))) . "</td>";
+                                    echo "<td>" . htmlspecialchars($votacao['produtos_nomes'] ?? 'Nenhum produto associado') . "</td>";
+                                    echo "<td>";
+                                    echo "<a href='./editarEnquete.php?id=" . htmlspecialchars($votacao['id']) . "'><button class='btnEditar'>Editar</button></a>";
+                                    // Classe específica para o botão de excluir enquete
+                                    echo "<button class='btnExcluirEnquete' data-id='" . htmlspecialchars($votacao['id']) . "'>Excluir</button>";
+                                    echo "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo '<tr><td colspan="6" style="text-align:center; padding: 20px;">Nenhuma enquete criada ainda.</td></tr>';
+                            }
+                        ?>
+                    </tbody>
                 </table>
             </div>
         </div>
-        
     </section>
 </main>
-
 <script src="../../Public/js/telaAdm.js"></script>

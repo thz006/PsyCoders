@@ -309,3 +309,18 @@
 .lista-produtos-checkbox::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.5);
 }
+
+.btnExcluirEnquete {
+    width: 70px;
+    height: 20px;
+    margin-bottom: 5px;
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+.btnExcluirEnquete{
+    background-color: #dc3545;
+    color: #fff;
+}

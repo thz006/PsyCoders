@@ -108,4 +108,58 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    document.querySelectorAll('.btnExcluirEnquete').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const id = event.target.dataset.id;
+            if (confirm('Tem certeza que deseja excluir esta enquete?')) {
+                const formData = new FormData();
+                formData.append('id', id);
+
+                fetch('../../App/Controller/VotacaoController.php?action=delete', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        alert('Erro: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Erro na requisição:', error));
+            }
+        });
+    });
+    // Lógica para o formulário de EDITAR PRODUTO
+const formEditarProduto = document.getElementById('formEditarProduto');
+
+if (formEditarProduto) {
+    formEditarProduto.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        formData.append('id', formEditarProduto.querySelector('input[name="id"]').value);
+
+        fetch('../../App/Controller/ProdutoController.php?action=update', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Produto atualizado com sucesso!');
+                window.location.href = 'telaAdm.php'; // Volta para tela principal
+            } else {
+                alert('Erro: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+            alert('Erro ao atualizar o produto.');
+        });
+    });
+}
 });
+

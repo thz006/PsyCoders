@@ -8,13 +8,15 @@ CREATE TABLE `Funcionarios` (
 	PRIMARY KEY(`id`)
 );
 
-CREATE TABLE `Usuario` (
-	`id` INTEGER NOT NULL AUTO_INCREMENT,
-	`Nome` VARCHAR(255) NOT NULL,
-	`Email` VARCHAR(255) NOT NULL UNIQUE,
-	`Senha` VARCHAR(255) NOT NULL,
-	PRIMARY KEY(`id`)
+CREATE TABLE `users` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    PRIMARY KEY(`id`)
 );
+
 
 CREATE TABLE `Produtos` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
@@ -29,7 +31,7 @@ CREATE TABLE `Produtos` (
 );
 INSERT INTO Funcionarios (Nome, Email, Senha) 
 VALUES ('Admin Padrão', 'admin@teste.com', 'senha_temporaria');
-
+select * from users;
 select * from funcionarios;
 select * from produtos;
 select * from votacoes;

@@ -1,0 +1,146 @@
+.votarProduto-body{
+	background: linear-gradient(280deg, #FFEDDD, #F5F5F5)
+}
+
+.votarProduto-Sidebar{
+	position: fixed;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 64px;
+	background-color: white;
+	box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
+.votarProduto-logo{
+	margin-left: 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.votarProduto-logo img{
+	width: 40px;
+}
+
+.votarProduto-logo h1{
+	color: #1C1C1C;
+	font-weight: 500;
+	font-size: 1.5rem;
+}
+
+.votarProduto-logo span{
+	font-weight: 400;
+}
+
+.votarProduto-burguer i{
+	color: #FF7703;
+	font-size: 2.75rem;
+	margin-right: 0.5rem;
+}
+
+.votarProduto-topSemanal, .votarProduto-topText{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.votarProduto-topSemanal{
+	margin-top: 10rem;
+	align-items: center;
+}
+
+
+
+.votarProduto-topText h1{
+	font-size: 1.75rem;
+	font-weight: 600;
+	color: #1C1C1C;
+
+}
+
+.votarProduto-topText p{
+	color: #444444;
+	font-size: 1.25rem;
+}
+
+/* Seção do carousel */
+.votarProduto-carousel{
+	width: 100%;
+}
+
+.swiper{
+    width: 100%;
+    height: 350px;
+}
+
+.swiper .swiper-slide{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper {
+  overflow: visible;
+}
+
+/* MOBILE – garante que o cartão tenha exatamente a largura do slide */
+@media (max-width: 767px) {
+  .swiper-slide            { width: 50vw !important; }   /* 25 % de cada vizinho fica visível  */
+  .votarProduto-Produto    { width: 100%; max-width: 200px; } /* acompanha o slide           */
+  .swiper-slide-active .votarProduto-Produto {
+    transform: scale(1.04);        /* zoom bem discreto (ou retire) */
+  }
+}
+
+.swiper-slide-active .votarProduto-Produto {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.votarProduto-Produto{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem 0;
+	width: 180px;
+	height: 200px;
+	background-color: #fdfdfd;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	gap: 5%;
+}
+
+.votarProduto-Produto img{
+	height: 70%;
+}
+
+.votarProduto-prodInfo{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.votarProduto-prodInfo i{
+	font-size: 2.3rem;
+	color: #FF7A00;
+}
+
+.votarProduto-prodText{
+	display: flex;
+	flex-direction: column;
+}
+
+.votarProduto-prodText h1{
+	font-size: 1rem;
+	font-weight: 500;
+	/*color: #1C1C1C;*/
+}
+
+.votarProduto-prodText p{
+	font-size: 0.80rem;
+	color: #444444;
+}

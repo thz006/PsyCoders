@@ -203,3 +203,26 @@
 	font-size: 0.80rem;
 	color: #444444;
 }
+
+@media (min-width: 1024px) {
+	.votarProduto-Produto {
+	  width: 220px;
+	  height: 240px;
+	}
+  
+	.votarProduto-Produto img {
+	  height: 75%;
+	}
+  
+	.votarProduto-prodText h1 {
+	  font-size: 1.1rem;
+	}
+  
+	.votarProduto-prodText p {
+	  font-size: 0.9rem;
+	}
+  
+	.votarProduto-prodInfo i {
+	  font-size: 2.5rem;
+	}
+  }

@@ -1,0 +1,67 @@
+create database psycoders;
+use psycoders;
+CREATE TABLE `Funcionarios` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`Nome` VARCHAR(255) NOT NULL,
+	`Email` VARCHAR(255) NOT NULL UNIQUE,
+	`Senha` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `Usuario` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`Nome` VARCHAR(255) NOT NULL,
+	`Email` VARCHAR(255) NOT NULL UNIQUE,
+	`Senha` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `Produtos` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `nome` VARCHAR(255) NOT NULL,
+    `descricao` TEXT NOT NULL,
+    `quantidade` INTEGER NOT NULL,
+    `imagem` VARCHAR(255) NULL, -- COLUNA ADICIONADA AQUI
+    `data_criacao` DATETIME NOT NULL,
+    `criado_por` INTEGER NOT NULL,
+    PRIMARY KEY(`id`),
+    FOREIGN KEY(`criado_por`) REFERENCES `Funcionarios`(`id`) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+INSERT INTO Funcionarios (Nome, Email, Senha) 
+VALUES ('Admin Padrão', 'admin@teste.com', 'senha_temporaria');
+
+select * from funcionarios;
+select * from produtos;
+select * from votacoes;
+select * from votacoes_produtos;
+CREATE TABLE `Votacoes` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`titulo` VARCHAR(255) NOT NULL,
+	`descricao` TEXT NOT NULL,
+	`data_inicio` DATETIME NOT NULL,
+	`data_fim` DATETIME NOT NULL,
+	`criado_por` INTEGER NOT NULL,
+	PRIMARY KEY(`id`),
+    FOREIGN KEY(`criado_por`) REFERENCES `Funcionarios`(`id`) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+CREATE TABLE `votacoes_produtos` (
+	`id_votacoes` INTEGER NOT NULL,
+	`id_produto` INTEGER NOT NULL,
+	PRIMARY KEY(`id_votacoes`, `id_produto`),
+    FOREIGN KEY(`id_votacoes`) REFERENCES `Votacoes`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(`id_produto`) REFERENCES `Produtos`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE `Votos` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`id_votacoes` INTEGER NOT NULL,
+	`id_produto` INTEGER NOT NULL,
+	`id_usuario` INTEGER NOT NULL,
+	`data_voto` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY(`id`),
+    FOREIGN KEY(`id_votacoes`) REFERENCES `Votacoes`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(`id_produto`) REFERENCES `Produtos`(`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY(`id_usuario`) REFERENCES `Usuario`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT `uq_usuario_por_votacao` UNIQUE (`id_usuario`, `id_votacoes`)
+);

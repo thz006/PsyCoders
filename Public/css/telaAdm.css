@@ -241,3 +241,21 @@
     height: 30px;
 
 }
+.produto-escondido {
+    display: none;
+}
+.lista-produtos-checkbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.lista-produtos-checkbox div {
+    display: flex;
+    align-items: center;
+}

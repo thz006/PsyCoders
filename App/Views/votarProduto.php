@@ -8,7 +8,8 @@
 <title>Votar Produtos</title>
 
 <body class="votarProduto-body">
-	<div class="votarProduto-Sidebar">
+	 
+	<!-- <div class="votarProduto-Sidebar">
 
 		<div class="votarProduto-logo">
 			<img src="../../Public/img/logo.avif" alt="">
@@ -19,9 +20,10 @@
 			<i class="fa-solid fa-bars"></i>
 		</div>
 
-	</div>
+	</div> -->
 
 	<section class="votarProduto-topSemanal">
+		<a href="enquetes.php" class="botao-voltar"><i class="fa-solid fa-angle-left"></i> Voltar</a>
 
 		<div class="votarProduto-topText">
 			<h1>Top da Semana</h1>

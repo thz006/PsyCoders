@@ -1,3 +1,7 @@
+.votarProduto-body{
+	background: linear-gradient(280deg, #FFEDDD, #F5F5F5)
+}
+
 .votarProduto-Sidebar{
 	position: fixed;
 	top: 0;
@@ -44,7 +48,7 @@
 }
 
 .votarProduto-topSemanal{
-	margin-top: 5rem;
+	margin-top: 10rem;
 	align-items: center;
 }
 

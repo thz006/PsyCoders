@@ -6,7 +6,7 @@ include '../../Public/includes/header.php';
 <script defer src="../../Public/js/votarProduto.js"></script>
 <title>Votar Produtos</title>
 
-<body>
+<body class="votarProduto-body">
 	<div class="votarProduto-Sidebar">
 
 		<div class="votarProduto-logo">
@@ -103,10 +103,6 @@ include '../../Public/includes/header.php';
 
 			  <!-- If we need pagination -->
 			  <div class="swiper-pagination"></div>
-
-			  If we need navigation buttons
-<!-- 			  <div class="swiper-button-prev"></div>
-			  <div class="swiper-button-next"></div> -->
 
 			</div>
 

@@ -63,7 +63,7 @@ class Database {
         $limitClause = $limit ? 'LIMIT ' . $limit : '';
 
         $query = 'SELECT ' . $fields . ' FROM ' . $this->table . ' ' . $whereClause . ' ' . $orderClause . ' ' . $limitClause;
-
+        
         return $this->execute($query, $binds);
     }
     public function delete(string $where, array $binds = []): bool {

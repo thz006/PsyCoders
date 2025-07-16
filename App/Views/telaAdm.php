@@ -1,33 +1,14 @@
 <?php
     require_once __DIR__ . '/../../App/Model/Produto.php';
+    require_once __DIR__ . '/../../App/Model/Votacao.php';
     $produtos = Produto::findAll();
+    // $votacoes = VotacaoModel::findAllWithProducts();
 ?>
 <?php
     include '../../Public/includes/header.php';
 ?>
 
 <title>Votação - Administração</title>
-
-<style>
-    .produto-escondido {
-        display: none;
-    }
-    .lista-produtos-checkbox {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
-        background-color: #f9f9f9;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        max-height: 200px;
-        overflow-y: auto;
-    }
-    .lista-produtos-checkbox div {
-        display: flex;
-        align-items: center;
-    }
-</style>
 
 <main class="mainAdm">
     <a href="telaInicial.php" class="botao-voltar"><i class="fa-solid fa-angle-left"></i> Voltar</a>
@@ -128,18 +109,18 @@
                 <label for="data_fim">Data de Fim</label>
                 <input type="datetime-local" id="data_fim" name="data_fim" required>
 
-                <label>Selecione os Produtos para a Votação:</label>
+                <label class="label-produtos">Selecione os Produtos para a Votação:</label>
                 <div class="lista-produtos-checkbox">
                     <?php
                         if (!empty($produtos)) {
                             foreach ($produtos as $produto) {
-                                echo '<div>';
+                                echo '<div class="produto-checkbox">';
                                 echo '<input type="checkbox" name="produtos[]" value="' . htmlspecialchars($produto['id']) . '" id="produto_' . htmlspecialchars($produto['id']) . '">';
                                 echo '<label for="produto_' . htmlspecialchars($produto['id']) . '">' . htmlspecialchars($produto['nome']) . '</label>';
                                 echo '</div>';
                             }
                         } else {
-                            echo '<p>Nenhum produto disponível para seleção.</p>';
+                            echo '<p class="sem-produtos">Nenhum produto disponível para seleção.</p>';
                         }
                     ?>
                 </div>

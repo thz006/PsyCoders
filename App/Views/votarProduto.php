@@ -1,6 +1,7 @@
-<?php
-include '../../Public/includes/header.php';
-?>
+<?php include '../../Public/includes/header.php'; ?>
+
+<!-- Linkando o swiper diretamente nessa página ao invés do css geral, para otimização.  -->
+
 <link rel="stylesheet" href="../../Public/css/swiper-bundle.css">
 <script defer src="../../Public/js/swiper-bundle.js"></script>
 <script defer src="../../Public/js/votarProduto.js"></script>

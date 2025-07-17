@@ -13,14 +13,14 @@ class User {
 
     // Constructor to hydrate the object from database data or initial values
     public function __construct(array $dados = []) {
-        if (!empty($dados)) {
-            $this->id         = $dados['id'] ?? null;
-            $this->username   = $dados['username'] ?? '';
-            $this->email      = $dados['email'] ?? '';
-            $this->password   = $dados['password'] ?? '';
-            $this->created_at = $dados['created_at'] ?? null;
-        }
+    if (!empty($dados)) {
+        $this->id         = $dados['id'] ?? null;
+        $this->username   = $dados['Nome'] ?? '';     // Use 'Nome' do banco
+        $this->email      = $dados['Email'] ?? '';    // Use 'Email' do banco
+        $this->password   = $dados['Senha'] ?? '';    // Use 'Senha' do banco
+        $this->created_at = $dados['created_at'] ?? null; // Esta coluna não existe na sua tabela, mas não causa erro
     }
+}
 
     /**
      * Saves a new user record to the database.
@@ -34,10 +34,9 @@ class User {
 
         // Prepare the values for insertion. Sanitize here if not done earlier.
         $values = [
-            'username'   => htmlspecialchars(strip_tags($this->username)),
-            'email'      => htmlspecialchars(strip_tags($this->email)),
-            'password'   => $this->password, // Password should be hashed before reaching here
-            'created_at' => date('Y-m-d H:i:s') // Set creation timestamp
+            'Nome'   => htmlspecialchars(strip_tags($this->username)),
+            'Email'      => htmlspecialchars(strip_tags($this->email)),
+            'Senha'   => $this->password, // Password should be hashed before reaching here
         ];
 
         try {
@@ -70,10 +69,10 @@ class User {
         $db = new Database('users');
 
         $values = [
-            'username' => htmlspecialchars(strip_tags($this->username)),
-            'email'    => htmlspecialchars(strip_tags($this->email)),
+            'Nome' => htmlspecialchars(strip_tags($this->username)),
+            'Email'    => htmlspecialchars(strip_tags($this->email)),
             // If password needs to be updated, it should be hashed before assigning to $this->password
-            'password' => $this->password
+            'Senha' => $this->password
         ];
 
         try {

@@ -34,10 +34,9 @@ class User {
 
         // Prepare the values for insertion. Sanitize here if not done earlier.
         $values = [
-            'username'   => htmlspecialchars(strip_tags($this->username)),
-            'email'      => htmlspecialchars(strip_tags($this->email)),
-            'password'   => $this->password, // Password should be hashed before reaching here
-            'created_at' => date('Y-m-d H:i:s') // Set creation timestamp
+            'Nome'   => htmlspecialchars(strip_tags($this->username)),
+            'Email'      => htmlspecialchars(strip_tags($this->email)),
+            'Senha'   => $this->password, // Password should be hashed before reaching here
         ];
 
         try {

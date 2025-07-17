@@ -131,7 +131,7 @@
   
   .task001-inputs {
     width: 100%;
-    padding: 10px 12px 10px 38px; /* espaço à esquerda para o ícone */
+    padding: 10px 12px 10px 38px; 
     border: none;
     border-radius: 8px;
     font-size: 1rem;

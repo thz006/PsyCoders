@@ -79,4 +79,16 @@ class Database {
         $stmt = $this->execute($query, array_values($values));
         return $stmt->rowCount() > 0;
     }
+    public function selectAllVotacoesComProdutos(): PDOStatement
+    {
+        $query = "SELECT v.id, v.titulo, v.descricao, v.data_inicio, v.data_fim, 
+                         GROUP_CONCAT(p.nome SEPARATOR ', ') as produtos_nomes 
+                  FROM Votacoes v 
+                  LEFT JOIN votacoes_produtos vp ON v.id = vp.id_votacoes 
+                  LEFT JOIN Produtos p ON vp.id_produto = p.id 
+                  GROUP BY v.id 
+                  ORDER BY v.data_inicio DESC";
+        
+        return $this->execute($query);
+    }
 }

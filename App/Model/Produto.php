@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . '/../../DB/Database.php';
 
-class Produto {
+class Produto
+{
     public int $id;
     public string $nome;
     public string $descricao;
@@ -10,20 +11,20 @@ class Produto {
     public string $data_criacao;
     public int $criado_por;
 
-    public function __construct($dados = []) {
+    public function __construct($dados = [])
+    {
         if (!empty($dados)) {
             $this->id           = $dados['id'] ?? 0;
             $this->nome         = $dados['nome_produto'] ?? ($dados['nome'] ?? '');
             $this->descricao    = $dados['descricao_produto'] ?? ($dados['descricao'] ?? '');
             $this->quantidade   = $dados['quantidade_produto'] ?? ($dados['quantidade'] ?? 0);
             $this->criado_por   = $dados['criado_por'] ?? 0;
-            
         }
     }
 
     public function create(?array $arquivoImagem): bool
     {
-       
+
         if (isset($arquivoImagem) && $arquivoImagem['error'] === UPLOAD_ERR_OK) {
             $uploadDir = __DIR__ . '/../../Public/img/';
 
@@ -37,10 +38,10 @@ class Produto {
             if (move_uploaded_file($arquivoImagem['tmp_name'], $caminhoCompleto)) {
                 $this->imagem = 'img/' . $nomeArquivo;
             } else {
-                $this->imagem = null; 
+                $this->imagem = null;
             }
         } else {
-            $this->imagem = null; 
+            $this->imagem = null;
         }
 
         $db = new Database('Produtos');
@@ -55,12 +56,43 @@ class Produto {
 
         return $this->id > 0;
     }
-    
-    public function update(): bool
+
+    public function update(array $dados, ?array $novaImagem = null): bool
     {
+        $this->nome = $dados['nome_produto'] ?? $this->nome;
+        $this->descricao = $dados['descricao_produto'] ?? $this->descricao;
+        $this->quantidade = $dados['quantidade_produto'] ?? $this->quantidade;
+
+        if ($novaImagem && $novaImagem['error'] === UPLOAD_ERR_OK) {
+
+            if ($this->imagem) {
+                $caminhoAntigo = __DIR__ . '/../../Public/' . $this->imagem;
+                if (file_exists($caminhoAntigo)) {
+                    unlink($caminhoAntigo);
+                }
+            }
+
+            $uploadDir = __DIR__ . '/../../Public/img/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $nomeArquivo = uniqid() . '-' . basename($novaImagem['name']);
+            $caminhoCompleto = $uploadDir . $nomeArquivo;
+
+            if (move_uploaded_file($novaImagem['tmp_name'], $caminhoCompleto)) {
+                $this->imagem = 'img/' . $nomeArquivo;
+            }
+        }
+
         $db = new Database('Produtos');
         return $db->update(
-            ['nome' => $this->nome, 'descricao' => $this->descricao, 'quantidade' => $this->quantidade],
+            [
+                'nome' => $this->nome,
+                'descricao' => $this->descricao,
+                'quantidade' => $this->quantidade,
+                'imagem' => $this->imagem
+            ],
             "id = ?",
             [$this->id]
         );

@@ -1,6 +1,6 @@
 <?php
-define('DB_HOST', '192.168.22.9');
+define('DB_HOST', 'localhost');
 define('DB_NAME', 'psycoders');
-define('DB_USER', 'psycoders');
-define('DB_PASS', 'psycoders@130');
+define('DB_USER', 'root');
+define('DB_PASS', 'Oliveira@87185');
 ?>

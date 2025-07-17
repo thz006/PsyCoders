@@ -149,7 +149,6 @@
                                     echo "<td>" . htmlspecialchars($votacao['produtos_nomes'] ?? 'Nenhum produto associado') . "</td>";
                                     echo "<td>";
                                     echo "<a href='./editarEnquete.php?id=" . htmlspecialchars($votacao['id']) . "'><button class='btnEditar'>Editar</button></a>";
-                                    // Classe específica para o botão de excluir enquete
                                     echo "<button class='btnExcluirEnquete' data-id='" . htmlspecialchars($votacao['id']) . "'>Excluir</button>";
                                     echo "</td>";
                                     echo "</tr>";

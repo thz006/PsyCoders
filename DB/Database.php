@@ -89,7 +89,6 @@ class Database {
                   GROUP BY v.id 
                   ORDER BY v.data_inicio DESC";
         
-        // Este método não precisa de tabela no construtor, por isso chama execute diretamente
         return $this->execute($query);
     }
 }

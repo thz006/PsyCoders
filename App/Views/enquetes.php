@@ -1,4 +1,4 @@
-<?php include '../../Public/includes/header.php'; ?>
+<?php include '../../Public/includes/header.php'; session_start() ?>
 <script src="../../Public/js/enquetes.js" defer></script>
 <title>Enquetes</title>
 
@@ -16,6 +16,12 @@
 		</div>
 
 	</div>
+
+    <div class="menu-dropdown" id="menuDropdown">
+      <p class="menu-username">Olá, <span id="nomeUsuario"><?php echo $_SESSION['username']; ?></span></p>
+      <button onclick="window.location.href='../Controller/logout.php'">Sair</button>
+    </div>
+
 
     <section class="enquetes-section" >
 

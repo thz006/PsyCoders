@@ -77,7 +77,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'login') {
     $_SESSION['user_id'] = $user->id;
     $_SESSION['username'] = $user->username;
     http_response_code(200);
-    echo json_encode(['success' => true, 'message' => 'Login realizado com sucesso!', 'redirect' => 'telaInicial.php']);
+    echo json_encode(['success' => true, 'message' => 'Login realizado com sucesso!', 'redirect' => 'enquetes.php']);
     exit();
 }
 

@@ -1,4 +1,15 @@
-<?php include '../../Public/includes/header.php'; ?>
+<?php include '../../Public/includes/header.php'; 
+include '../../App/Model/User.php'; 
+session_start();
+
+
+$id_user =  $_SESSION['user_id'];
+$user = new User();
+
+$result = $user->getUser($id_user);
+print_r($result);
+?>
+
 <title>Enquetes</title>
 
 <body class="enquetes-body">
@@ -11,7 +22,7 @@
 		</div>
 
 		<div class="votarProduto-burguer">
-			<i class="fa-solid fa-bars"></i>
+			
 		</div>
 
 	</div>

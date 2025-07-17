@@ -179,4 +179,16 @@ class User {
             return 'Erro inesperado: ' . $e->getMessage();
         }
     }
+
+    public static function getUser(int $id): ?array {
+        $db = new Database('users');
+        try {
+            $stmt = $db->select("id = ?", [$id], null, '1');
+            $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $dados ?: null;
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar cliente: " . $e->getMessage());
+            return null;
+        }
+    }
 }

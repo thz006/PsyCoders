@@ -21,7 +21,7 @@
             padding: 15px 25px;
             border-radius: 8px;
             color: white;
-            font-family: 'Montserrat', sans-serif; /* Usando uma das suas fontes */
+            font-family: 'Montserrat', sans-serif; 
             font-size: 16px;
             z-index: 1000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

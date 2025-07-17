@@ -1,12 +1,10 @@
 <?php
-// App/Views/telaCadastro.php
 
-// Inclui o cabeçalho comum que agora tem o Font Awesome e outros links gerais
+
 include __DIR__.'/../../Public/includes/header.php';
 ?>
 
 <body class="task001-body">
-    <!-- Caixa de mensagens customizada -->
     <div id="messageBox">
         <span id="messageText"></span>
         <button id="closeMessageBox">&times;</button>

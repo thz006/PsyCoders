@@ -1,51 +1,41 @@
 <?php
-// App/Models/User.php
 
-// O caminho para Database.php deve ser relativo a User.php
 require_once __DIR__ . '/../../DB/Database.php';
 
 class User {
     public ?int $id = null;
     public string $username = '';
     public string $email = '';
-    public string $password = ''; // This will store the HASHED password from the DB
-    public ?string $created_at = null; // Assuming your 'users' table has a created_at field
+    public string $password = ''; 
+    public ?string $created_at = null; 
 
-    // Constructor to hydrate the object from database data or initial values
     public function __construct(array $dados = []) {
     if (!empty($dados)) {
         $this->id         = $dados['id'] ?? null;
-        $this->username   = $dados['Nome'] ?? '';     // Use 'Nome' do banco
-        $this->email      = $dados['Email'] ?? '';    // Use 'Email' do banco
-        $this->password   = $dados['Senha'] ?? '';    // Use 'Senha' do banco
-        $this->created_at = $dados['created_at'] ?? null; // Esta coluna não existe na sua tabela, mas não causa erro
+        $this->username   = $dados['Nome'] ?? '';     
+        $this->email      = $dados['Email'] ?? '';    
+        $this->password   = $dados['Senha'] ?? '';   
+        $this->created_at = $dados['created_at'] ?? null; 
     }
 }
 
     /**
-     * Saves a new user record to the database.
-     * Assumes the password property is already hashed before calling this method.
-     *
-     * @return bool True if the user was created successfully, false otherwise.
+     * @return bool
      */
     public function create(): bool {
-        // Instantiate the Database class for the 'users' table
         $db = new Database('users');
 
-        // Prepare the values for insertion. Sanitize here if not done earlier.
         $values = [
             'Nome'   => htmlspecialchars(strip_tags($this->username)),
             'Email'      => htmlspecialchars(strip_tags($this->email)),
-            'Senha'   => $this->password, // Password should be hashed before reaching here
+            'Senha'   => $this->password, 
         ];
 
         try {
-            // Use the insert method from your Database class
-            // The insert method returns the lastInsertId. We assume success if it returns a positive ID.
             $newId = $db->insert($values);
 
             if ($newId) {
-                $this->id = $newId; // Update the object's ID with the newly created one
+                $this->id = $newId; 
                 return true;
             }
             return false;
@@ -56,13 +46,11 @@ class User {
     }
 
     /**
-     * Updates an existing user record in the database.
-     *
-     * @return bool True if the user was updated successfully, false otherwise.
+     * @return bool 
      */
     public function update(): bool {
         if (!$this->id) {
-            // Cannot update if the ID is not set (i.e., not an existing record)
+            
             return false;
         }
 
@@ -71,7 +59,6 @@ class User {
         $values = [
             'Nome' => htmlspecialchars(strip_tags($this->username)),
             'Email'    => htmlspecialchars(strip_tags($this->email)),
-            // If password needs to be updated, it should be hashed before assigning to $this->password
             'Senha' => $this->password
         ];
 
@@ -88,16 +75,14 @@ class User {
     }
 
     /**
-     * Finds a user by their ID.
-     *
-     * @param int $id The ID of the user to find.
-     * @return self|null A User object if found, null otherwise.
+     * @param int 
+     * @return self|null
      */
     public static function findById(int $id): ?self {
         $db = new Database('users');
         try {
-            $stmt = $db->select("id = ?", [$id], null, '1'); // Limit to 1 result
-            $dados = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch as associative array
+            $stmt = $db->select("id = ?", [$id], null, '1'); 
+            $dados = $stmt->fetch(PDO::FETCH_ASSOC); 
             return $dados ? new self($dados) : null;
         } catch (PDOException $e) {
             error_log("Erro de banco de dados ao buscar usuário por ID: " . $e->getMessage());
@@ -106,10 +91,8 @@ class User {
     }
 
     /**
-     * Finds a user by their email address.
-     *
-     * @param string $email The email address of the user to find.
-     * @return self|null A User object if found, null otherwise.
+     * @param string 
+     * @return self|null
      */
     public static function findByEmail(string $email): ?self {
         $db = new Database('users');
@@ -124,8 +107,6 @@ class User {
     }
 
     /**
-     * Checks if a user with the given email already exists in the database.
-     *
      * @param string $email The email address to check.
      * @return bool True if the email exists, false otherwise.
      */
@@ -142,8 +123,6 @@ class User {
     }
 
     /**
-     * Deletes a user record from the database by their ID.
-     *
      * @param int $id The ID of the user to delete.
      * @return bool True if the user was deleted successfully, false otherwise.
      */
@@ -158,9 +137,8 @@ class User {
     }
 
     /**
-     * Cria um usuário a partir de um objeto de requisição (stdClass)
-     * @param object $data
-     * @return true|string true em caso de sucesso, mensagem de erro em caso de falha
+     * @param object 
+     * @return true|string
      */
     public static function createFromRequest($data) {
         try {

@@ -139,12 +139,11 @@
 }
 
 
-/* MOBILE – garante que o cartão tenha exatamente a largura do slide */
 @media (max-width: 767px) {
-  .swiper-slide            { width: 50vw !important; }   /* 25 % de cada vizinho fica visível  */
-  .votarProduto-Produto    { width: 100%; max-width: 200px; } /* acompanha o slide           */
+  .swiper-slide            { width: 50vw !important; }   
+  .votarProduto-Produto    { width: 100%; max-width: 200px; } 
   .swiper-slide-active .votarProduto-Produto {
-    transform: scale(1.04);        /* zoom bem discreto (ou retire) */
+    transform: scale(1.04);        
   }
 
 

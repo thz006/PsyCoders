@@ -1,5 +1,4 @@
 <?php
-// App/Controller/AuthController.php
 
 require_once __DIR__ . '/../Model/User.php';
 
@@ -25,6 +24,14 @@ if (isset($_GET['action']) && $_GET['action'] === 'register') {
     if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'E-mail inválido.']);
+        exit();
+    }
+    // Validação de senha forte
+    $senha = $data->password;
+    $regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':\\\"|,.<>\/?]).{8,}$/";
+    if (!preg_match($regex, $senha)) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, uma minúscula, um número e um caractere especial.']);
         exit();
     }
     if ($data->password !== $data->confirm_password) {
@@ -77,7 +84,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'login') {
     $_SESSION['user_id'] = $user->id;
     $_SESSION['username'] = $user->username;
     http_response_code(200);
-    echo json_encode(['success' => true, 'message' => 'Login realizado com sucesso!', 'redirect' => 'enquetes.php']);
+    echo json_encode(['success' => true, 'message' => 'Login realizado com sucesso!', 'redirect' => 'telaInicial.php']);
     exit();
 }
 

@@ -44,6 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 showMessage('Por favor, preencha todos os campos.');
                 return;
             }
+            // Validação de senha forte
+            const senhaForteRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':\\"|,.<>\/?]).{8,}$/;
+            if (!senhaForteRegex.test(password)) {
+                showMessage('A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, uma minúscula, um número e um caractere especial.');
+                return;
+            }
             if (password !== confirmPassword) {
                 showMessage('As senhas não coincidem!');
                 return;

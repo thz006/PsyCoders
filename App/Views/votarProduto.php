@@ -1,6 +1,5 @@
 <?php include '../../Public/includes/header.php'; ?>
 
-<!-- Linkando o swiper diretamente nessa página ao invés do css geral, para otimização.  -->
 
 <link rel="stylesheet" href="../../Public/css/swiper-bundle.css">
 <script defer src="../../Public/js/swiper-bundle.js"></script>
@@ -32,11 +31,8 @@
 
 		<div class="votarProduto-carousel">
 						
-			<!-- Slider main container -->
 			<div class="swiper" id="swiper-inicial">
-			  <!-- Additional required wrapper -->
 			  <div class="swiper-wrapper">
-			    <!-- Slides -->
 			    <div class="swiper-slide">
 
 			    	<div class="votarProduto-Produto">
@@ -104,7 +100,6 @@
 
 			  </div>
 
-			  <!-- If we need pagination -->
 			  <div class="swiper-pagination"></div>
 
 			</div>

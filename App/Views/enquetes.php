@@ -13,7 +13,6 @@ print_r($result);
 <title>Enquetes</title>
 
 <body class="enquetes-body">
-    <!-- puxando sidebar/navbar da tela de votarProduto pois já esta pronta -->
 	<div class="votarProduto-Sidebar">
 
 		<div class="votarProduto-logo">

@@ -66,4 +66,26 @@ class VotacaoModel {
         
         return $sucesso;
     }
+
+    public static function getAllEnquetes(): array
+{
+    $db = new Database('Votacoes');
+    $resultados = $db->select()->fetchAll(PDO::FETCH_ASSOC);
+    $votacoes = [];
+
+    foreach ($resultados as $dados) {
+        // Buscar produtos relacionados
+        $dbVotacoesProdutos = new Database('votacoes_produtos');
+        $produtos = $dbVotacoesProdutos
+            ->select('id_votacoes = ' . $dados['id'])
+            ->fetchAll(PDO::FETCH_COLUMN, 1);
+
+        $dados['produtos'] = $produtos;
+
+        // Não instancia objeto — já retorna array
+        $votacoes[] = $dados;
+    }
+
+    return $votacoes;
+}
 }

@@ -91,9 +91,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'login') {
         if (password_verify($data->password, $user->password)) {
             error_log("LOGIN_DEBUG [SUCESSO]: Senha do CLIENTE verificada. Login bem-sucedido.");
             if (session_status() == PHP_SESSION_NONE) { session_start(); }
-            $_SESSION['user_id'] = $user->id;
-            $_SESSION['username'] = $user->username;
-            $_SESSION['user_role'] = 'cliente';
+            $_SESSION['cliente'] = [
+            'id'   => $user->id,
+            'nome' => $user->username,
+            'user_role' => 'cliente'
+            ];
             http_response_code(200);
             echo json_encode(['success' => true, 'message' => 'Login realizado com sucesso!', 'redirect' => 'enquetes.php']);
             exit();
@@ -114,9 +116,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'login') {
         if (password_verify($data->password, $funcionario->password)) {
             error_log("LOGIN_DEBUG [SUCESSO]: Senha do FUNCIONÁRIO verificada. Login bem-sucedido.");
             if (session_status() == PHP_SESSION_NONE) { session_start(); }
-            $_SESSION['user_id'] = $funcionario->id;
-            $_SESSION['username'] = $funcionario->username;
-            $_SESSION['user_role'] = 'admin';
+            $_SESSION['admin'] = [
+            'id'   => $funcionario->id,
+            'nome' => $funcionario->username,
+            'func_role' => 'admin'
+            ];
             http_response_code(200);
             echo json_encode(['success' => true, 'message' => 'Login de administrador realizado!', 'redirect' => 'telaAdm.php']);
             exit();

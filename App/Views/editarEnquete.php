@@ -4,7 +4,7 @@
 
 
 
-    if (!isset($_SESSION['username']['user_id'])) {
+    if (!isset($_SESSION['admin'])) {
     header('Location: telaInicial.php');
     exit();
 }

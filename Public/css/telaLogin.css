@@ -1,126 +1,131 @@
-.bodyLogin{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(45deg, #FFDEE5, #FFDFB0, #FFDEAE, #FFD9A3);
-    position: relative;
+/* CSS da tela de login - padrão igual ao cadastro */
+
+body.task001-body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(180deg, #FFE1B0 0%, #FFD9A3 50%, #FFD1E3 100%);
 }
 
-.areaLogin{
-    display: flex;
-    width: 100%;
-    height: 400px;  
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
-}
-.areaLogin h1{
-    font-size: 23px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    animation: mecher 5s ease infinite;
+.task001-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.areaLogin h1 span{
-    font-weight: 400;
+.task001-logo-text {
+  font-size: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  animation: mecher 5s ease infinite;
+  margin-bottom: 1rem;
+}
+.task001-logo-text img {
+  width: 35px;
+}
+.task001-logo-text span {
+  font-weight: 400;
+}
+
+.task001-title {
+  font-size: 60px;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.task001-subtitle {
+  font-size: 1rem;
+  color: #444444;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 32px;
+  max-width: 320px;
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.task001-input-box {
+  position: relative;
+  width: 100%;
+}
+
+.task001-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #444444;
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.task001-inputs {
+  width: 100%;
+  padding: 10px 12px 10px 38px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 1px 2px #0001;
+  outline: none;
+  transition: border 0.2s;
+}
+.task001-inputs:focus {
+  border: 1.5px solid #FF7900;
+}
+
+.botao-lg {
+  margin-top: 10px;
+  padding: 12px;
+  width: 100%;
+  background: linear-gradient(to right, #FF9900, #FF7A00, #FF5500);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px #ff790033;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.botao-lg:hover {
+  background: #e86c00;
+}
+
+.task001-ja-possui-conta {
+  margin-top: 18px;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.task001-ir-para-login {
+  margin-left: 4px;
+  color: #FF7900;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.task001-ir-para-login:hover {
+  color: #e86c00;
 }
 
 @keyframes mecher {
-    0% {
-        transform: scale(1) rotate(0deg);
-    }
-    50% {
-        transform: scale(1.2) rotate(-2deg);
-    }
-    100% {
-        transform: scale(1) rotate(0deg);
-    }
-}
-
-.areaLogin h1 img{
-    width: 35px;
-}
-
-.areaLogin h2{
-    font-size: 60px ;
-}
-
-.areaLogin .loginWelcome{
-    width: 250px;
-    display: flex;
-    text-align: center;
-    font-size: 18px;
-    color: #444444;
-    font-weight: 400;
-}
-
-.formLogin{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* background-color: blue;   */
-    width: 60vw;
-    height: 80vh;
-    gap: 1rem;
-}
-.areaInput{
-    width: 250px;
-    height: 35px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    text-align: start;
-    padding: 7px;
-    border: none;
-    background-color: white;
-    gap: 10px;
-}
-.areaInput i{
-    bottom: 20px;
-    color: #444444;
-    font-size: 22px;
-}
-
-.formLogin input[type="email"], .formLogin input[type="password"]{
-    border: none;
-    background-color: transparent;
-    /* background-color: #FF7A00; */
-    color: #989898;
-    font-weight: 500;
-    width: 80%;
-}   
-
-.formLogin input[type="email"], .formLogin input[type="password"]:focus{
-    border: none;
-    outline: none;
-}
-
-.formLogin input[type="submit"]{
-    width: 250px;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-}
-
-.loginInfo{
-    display: unset;
-    width: unset;
-    height: unset;
-    white-space: nowrap;
-    color: #444444;
-    font-weight: 600;
-}
-
-.loginInfo a{
-    color: #FF7703;
-    text-decoration: none;
-}
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+} 

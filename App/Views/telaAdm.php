@@ -4,10 +4,10 @@
     $produtos = Produto::findAll();
     $votacoes = VotacaoModel::findAllWithProducts();
 
-        if (!isset($_SESSION['username']['user_id'])) {
-    header('Location: telaInicial.php');
-    exit();
-}
+//         if (!isset($_SESSION['user_id'])) {
+//     header('Location: telaInicial.php');
+//     exit();
+// }
 ?>
 
 
@@ -18,7 +18,7 @@
 <title>Votação - Administração</title>
 
 <main class="mainAdm">
-    <a href="telaInicial.php" class="botao-voltar"><i class="fa-solid fa-angle-left"></i> Voltar</a>
+    <a href="../Controller/logout.php" class="botao-voltar"><i class="fa-solid fa-angle-left"></i> Voltar</a>
     
     <section class="sessaoAddProduto">
         <h1 class="titleAdm">Bem-vindo, Administrador</h1>

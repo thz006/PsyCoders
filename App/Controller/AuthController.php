@@ -95,7 +95,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'login') {
             $_SESSION['username'] = $user->username;
             $_SESSION['user_role'] = 'cliente';
             http_response_code(200);
-            echo json_encode(['success' => true, 'message' => 'Login realizado com sucesso!', 'redirect' => 'enquete.php']);
+            echo json_encode(['success' => true, 'message' => 'Login realizado com sucesso!', 'redirect' => 'enquetes.php']);
             exit();
         } else {
             error_log("LOGIN_DEBUG [FALHA]: Verificação de senha do CLIENTE falhou.");

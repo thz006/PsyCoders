@@ -173,6 +173,7 @@
 
 .votarProduto-Produto img{
 	height: 70%;
+	max-width: 150px;
 }
 
 .votarProduto-prodInfo{

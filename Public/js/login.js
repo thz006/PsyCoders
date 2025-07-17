@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok && data.success) {
                     showMessage(data.message, true);
                     setTimeout(() => {
-                        window.location.href = data.redirect || 'telaInicial.php';
+                        window.location.href = data.redirect || 'enquetes.php';
                     }, 1200);
                 } else {
                     showMessage(data.message || 'Erro ao fazer login.');

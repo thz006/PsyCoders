@@ -1,18 +1,13 @@
-<?php include '../../Public/includes/header.php'; 
+<?php include '../../Public/includes/header.php';
 include '../../App/Model/User.php'; 
 session_start();
 
 
-if (!isset($_SESSION['username']['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
 header('Location: telaInicial.php');
 exit();
 }
 
-$id_user =  $_SESSION['user_id'];
-$user = new User();
-
-$result = $user->getUser($id_user);
-print_r($result);
 ?>
 <script src="../../Public/js/enquetes.js" defer></script>
 <title>Enquetes</title>
@@ -26,10 +21,16 @@ print_r($result);
 		</div>
 
 		<div class="votarProduto-burguer">
-			
+            <i class="fa-solid fa-bars"></i>
 		</div>
 
 	</div>
+
+    <div class="menu-dropdown" id="menuDropdown">
+      <p class="menu-username">Olá, <span id="nomeUsuario"><?php echo $_SESSION['username']; ?></span></p>
+      <button onclick="window.location.href='../Controller/logout.php'">Sair</button>
+    </div>
+
 
     <section class="enquetes-section" >
 

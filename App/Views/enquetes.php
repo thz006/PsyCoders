@@ -3,7 +3,7 @@ include '../../App/Model/User.php';
 session_start();
 
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['cliente'])) {
 header('Location: telaInicial.php');
 exit();
 }

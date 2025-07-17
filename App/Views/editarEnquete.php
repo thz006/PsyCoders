@@ -3,7 +3,7 @@
     require_once __DIR__ . '/../../App/Model/Votacao.php';
 
 
-
+    session_start();
     if (!isset($_SESSION['admin'])) {
     header('Location: telaInicial.php');
     exit();

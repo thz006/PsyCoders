@@ -4,7 +4,7 @@
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     $produto = null;
 
-
+    session_start();
     if (!isset($_SESSION['admin'])) {
     header('Location: telaInicial.php');
     exit();

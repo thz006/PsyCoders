@@ -3,7 +3,7 @@
     require_once __DIR__ . '/../../App/Model/Votacao.php';
     $produtos = Produto::findAll();
     $votacoes = VotacaoModel::findAllWithProducts();
-
+    session_start();
 //         if (!isset($_SESSION['user_id'])) {
 //     header('Location: telaInicial.php');
 //     exit();

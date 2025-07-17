@@ -3,6 +3,11 @@ include '../../App/Model/User.php';
 session_start();
 
 
+if (!isset($_SESSION['username']['user_id'])) {
+header('Location: telaInicial.php');
+exit();
+}
+
 $id_user =  $_SESSION['user_id'];
 $user = new User();
 

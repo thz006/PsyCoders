@@ -4,6 +4,12 @@
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     $produto = null;
 
+
+    if (!isset($_SESSION['username']['user_id'])) {
+    header('Location: telaInicial.php');
+    exit();
+}
+
     if ($id) {
         $produto = Produto::findById($id);
     }

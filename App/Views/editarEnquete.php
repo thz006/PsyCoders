@@ -2,6 +2,14 @@
     require_once __DIR__ . '/../../App/Model/Produto.php';
     require_once __DIR__ . '/../../App/Model/Votacao.php';
 
+
+
+    if (!isset($_SESSION['username']['user_id'])) {
+    header('Location: telaInicial.php');
+    exit();
+}
+
+
     $id_enquete = $_GET['id'] ?? 0;
     if (!$id_enquete) {
 

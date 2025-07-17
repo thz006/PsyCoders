@@ -1,4 +1,11 @@
-<?php include '../../Public/includes/header.php'; ?>
+<?php include '../../Public/includes/header.php'; 
+
+
+    if (!isset($_SESSION['username']['user_id'])) {
+    header('Location: telaInicial.php');
+    exit();
+}
+?>
 
 
 <link rel="stylesheet" href="../../Public/css/swiper-bundle.css">

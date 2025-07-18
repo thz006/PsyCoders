@@ -12,36 +12,53 @@
     
     <!-- Estilos para a caixa de mensagens customizada -->
     <style>
-        #messageBox {
-            display: none;
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 15px 25px;
-            border-radius: 8px;
-            color: white;
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 16px;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            min-width: 300px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+       #messageBox {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #f44336; /* vermelho padrão para erro */
+        color: white;
+        padding: 15px 40px 15px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        display: none; /* fica invisível até ativar */
+        z-index: 9999;
+        min-width: 300px;
+        max-width: 90vw;
+        user-select: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        letter-spacing: 0.03em;
+        box-sizing: border-box;
         }
-        #messageBox.show {
-            opacity: 1;
+
+        #messageText {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px;
         }
+
         #closeMessageBox {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            position: absolute;
-            right: 10px;
-            top: 5px;
-            cursor: pointer;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+        user-select: none;
+        transition: color 0.2s ease;
         }
+
+        #closeMessageBox:hover {
+        color: #ddd;
+        }
+
+
     </style>
 </head>

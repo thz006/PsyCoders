@@ -5,7 +5,7 @@ include __DIR__.'/../../Public/includes/header.php';
 ?>
 
 <body class="task001-body">
-    <div id="messageBox">
+    <div id="messageBox" style="display:none;">
         <span id="messageText"></span>
         <button id="closeMessageBox">&times;</button>
     </div>

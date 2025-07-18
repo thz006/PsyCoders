@@ -59,18 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await fetch('../../App/Controller/CadastroController.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username,
-                        email,
-                        password,
-                        confirm_password: confirmPassword
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password, confirm_password: confirmPassword })
                 });
 
                 const result = await response.json();
+                console.log('Resposta do servidor:', result);
 
                 if (response.ok && result.success) {
                     showMessage(result.message, true);
@@ -81,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     showMessage(result.message || 'Erro ao cadastrar.');
                 }
             } catch (error) {
-                console.error(error);
+                console.error('Erro na requisição:', error);
                 showMessage('Erro ao conectar com o servidor.');
             }
         });

@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
+
+    if (!id) {
+      alert("ID da votação não informado.");
+      return;
+    }
+
     const response = await fetch(`/PsyCoders/App/Controller/VotarController.php?id=${id}`);
     const data = await response.json();
 
@@ -62,7 +68,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    // Função para adicionar evento de voto em todos botões
     function ativarEventosDeVoto() {
       document.querySelectorAll('.votar-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
@@ -73,25 +78,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             const res = await fetch('/PsyCoders/App/Controller/VotarController.php', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id_produto: idProduto, id_votacao: idVotacao })
+              body: JSON.stringify({
+                id_produto: idProduto,
+                id_votacao: idVotacao
+              })
             });
 
             const resData = await res.json();
 
             if (resData.success) {
-              // Atualiza slides e ranking com dados atualizados do servidor
               montarSlidesEranking(resData.produtos);
-              swiper.update(); // Atualiza swiper para reconhecer os novos slides
-
-              // Reativar eventos de voto nos novos botões
+              swiper.update();
               ativarEventosDeVoto();
-
             } else {
-              alert(resData.error || 'Você já votou!');
+              alert(resData.error || 'Você já votou nesta enquete.');
             }
 
           } catch (e) {
             console.error('Erro ao votar:', e);
+            alert('Erro ao registrar voto.');
           }
         });
       });
@@ -101,5 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   } catch (error) {
     console.error('Erro ao carregar produtos:', error);
+    alert('Erro ao carregar a votação.');
   }
 });

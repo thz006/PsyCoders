@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../Model/Usuario.php';
+header('Content-Type: application/json; charset=utf-8');
 
 // Garante que é uma requisição POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

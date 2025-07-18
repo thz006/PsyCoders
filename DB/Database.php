@@ -91,4 +91,17 @@ class Database {
         
         return $this->execute($query);
     }
+    public function getRankingVotosPorVotacao(int $idVotacao): array {
+        $sql = "
+            SELECT p.id, p.nome, p.imagem,
+                (SELECT COUNT(*) FROM Votos v WHERE v.id_produto = p.id AND v.id_votacoes = ?) AS votos
+            FROM Produtos p
+            INNER JOIN votacoes_produtos vp ON vp.id_produto = p.id
+            WHERE vp.id_votacoes = ?
+            ORDER BY votos DESC
+        ";
+        $stmt = $this->execute($sql, [$idVotacao, $idVotacao]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

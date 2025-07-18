@@ -7,7 +7,7 @@ session_start();
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Registrar voto
+
         $input = json_decode(file_get_contents("php://input"), true);
 
         $idProduto = $input['id_produto'] ?? null;
@@ -18,7 +18,6 @@ try {
             throw new Exception('Dados incompletos para votar ou usuário não logado.');
         }
 
-        // Verifica se usuário já votou na votação
         if (Voto::jaVotou($idUsuario, $idVotacao)) {
             echo json_encode(['error' => 'Você já votou nessa votação.']);
             exit;
@@ -37,7 +36,7 @@ try {
             exit;
         }
 
-        // Retorna produtos atualizados com votos (ranking)
+
         $produtos = Voto::rankingPorVotacao($idVotacao);
 
         echo json_encode([
@@ -47,7 +46,7 @@ try {
         exit;
 
     } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        // Pega a votação pelo id e retorna produtos e votos
+
         $idVotacao = $_GET['id'] ?? null;
 
         if (!$idVotacao) {
@@ -60,7 +59,7 @@ try {
             throw new Exception('Votação não encontrada ou sem produtos.');
         }
 
-        // Pega produtos com votos
+
         $produtos = Voto::rankingPorVotacao((int)$idVotacao);
 
         echo json_encode([

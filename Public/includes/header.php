@@ -10,20 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Tourney:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmRysVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Estilos para a caixa de mensagens customizada -->
+
     <style>
        #messageBox {
         position: fixed;
         top: 20px;
         left: 50%;
         transform: translateX(-50%);
-        background-color: #f44336; /* vermelho padrão para erro */
+        background-color: #f44336; 
         color: white;
         padding: 15px 40px 15px 20px;
         border-radius: 8px;
         font-weight: 600;
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        display: none; /* fica invisível até ativar */
+        display: none; 
         z-index: 9999;
         min-width: 300px;
         max-width: 90vw;

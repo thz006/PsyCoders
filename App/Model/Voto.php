@@ -30,7 +30,7 @@ class Voto {
 
     public static function rankingPorVotacao(int $idVotacao): array {
         $db = new Database();
-        // método que chama SQL para pegar ranking está dentro de Database.php
+
         return $db->getRankingVotosPorVotacao($idVotacao);
     }
 }

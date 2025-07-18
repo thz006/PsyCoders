@@ -40,7 +40,7 @@
 						
 			<div class="swiper" id="swiper-inicial">
 			  <div class="swiper-wrapper">
-			    <!-- Slides -->
+			    
 			  </div>
 
 			  <div class="swiper-pagination"></div>
@@ -62,7 +62,7 @@
 	        </tr>
 	      </thead>
 	      <tbody>
-	        <!-- Conteúdo atualizado via JS -->
+	        
 	      </tbody>
 	    </table>
 	  </div>

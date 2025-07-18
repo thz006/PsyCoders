@@ -157,7 +157,7 @@ class VotacaoModel {
     $votacoes = [];
 
     foreach ($resultados as $dados) {
-        // Buscar produtos relacionados
+        
         $dbVotacoesProdutos = new Database('votacoes_produtos');
         $produtos = $dbVotacoesProdutos
             ->select('id_votacoes = ' . $dados['id'])
@@ -165,7 +165,7 @@ class VotacaoModel {
 
         $dados['produtos'] = $produtos;
 
-        // Não instancia objeto — já retorna array
+  
         $votacoes[] = $dados;
     }
 

@@ -10,7 +10,6 @@ try {
         case 'create':
             $dadosFormulario = $_POST;
 
-            // Pega ID do funcionário logado da sessão
             $dadosFormulario['criado_por'] = $_SESSION['funcionario']['id'] ?? null;
 
             if (!$dadosFormulario['criado_por']) {
@@ -91,7 +90,7 @@ try {
         $produto = $dbProduto->select('id = ?', [$id_produto])->fetch(PDO::FETCH_ASSOC);
 
         if ($produto) {
-            // Conta os votos para este produto nesta votação
+
             $dbVotos = new Database('Votos');
             $contagem = $dbVotos->count('id_produto = ? AND id_votacoes = ?', [$id_produto, $id]);
 

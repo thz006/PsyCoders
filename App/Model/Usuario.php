@@ -19,9 +19,7 @@ class Usuario {
     }
 }
 
-    /**
-     * @return bool
-     */
+    
     public function create(): bool {
         $db = new Database('Usuario');
 
@@ -45,9 +43,7 @@ class Usuario {
         }
     }
 
-    /**
-     * @return bool 
-     */
+    
     public function update(): bool {
         if (!$this->id) {
             
@@ -74,10 +70,7 @@ class Usuario {
         }
     }
 
-    /**
-     * @param int 
-     * @return self|null
-     */
+    
     public static function findById(int $id): ?self {
         $db = new Database('Usuario');
         try {
@@ -90,10 +83,7 @@ class Usuario {
         }
     }
 
-    /**
-     * @param string 
-     * @return self|null
-     */
+    
     public static function findByEmail(string $email): ?self {
         $db = new Database('Usuario');
         try {
@@ -106,10 +96,7 @@ class Usuario {
         }
     }
 
-    /**
-     * @param string $email The email address to check.
-     * @return bool True if the email exists, false otherwise.
-     */
+    
     public static function emailExists(string $email): bool {
         $db = new Database('Usuario');
         try {
@@ -122,10 +109,7 @@ class Usuario {
         }
     }
 
-    /**
-     * @param int $id The ID of the user to delete.
-     * @return bool True if the user was deleted successfully, false otherwise.
-     */
+    
     public static function delete(int $id): bool {
         $db = new Database('Usuario');
         try {
@@ -136,10 +120,7 @@ class Usuario {
         }
     }
 
-    /**
-     * @param object 
-     * @return true|string
-     */
+   
     public static function createFromRequest($data) {
         try {
             $user = new self();

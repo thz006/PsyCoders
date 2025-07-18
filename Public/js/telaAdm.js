@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Lógica para o formulário de CRIAR PRODUTO
+    
     const formProduto = document.querySelector('.formCriarProduto');
     if (formProduto) {
         formProduto.addEventListener('submit', function(event) {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lógica para o formulário de CRIAR VOTAÇÃO (ENQUETE)
+    
     const formVotacao = document.querySelector('.formCriarVotacao');
     if (formVotacao) {
         formVotacao.addEventListener('submit', function(event) {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lógica para o botão MOSTRAR MAIS
+   
     const btnMostrarMais = document.getElementById('btn-mostrar-mais');
     if (btnMostrarMais) {
         btnMostrarMais.addEventListener('click', () => {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lógica para os botões EXCLUIR
+   
     document.querySelectorAll('.btnExcluir').forEach(button => {
         button.addEventListener('click', (event) => {
             const id = event.target.dataset.id;
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Lógica para o PREVIEW DA IMAGEM
+    
     const imgInput = document.getElementById('imgInput');
     const previewImg = document.getElementById('previewImg');
     if (imgInput && previewImg) {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // Lógica para o formulário de EDITAR PRODUTO
+    
 const formEditarProduto = document.getElementById('formEditarProduto');
 
 if (formEditarProduto) {

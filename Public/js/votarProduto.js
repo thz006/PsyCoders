@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       rankingBody.innerHTML = '';
 
       produtos.forEach(produto => {
-        // Slide
+       
         const slide = document.createElement('div');
         slide.classList.add('swiper-slide');
         slide.innerHTML = `
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
         swiperWrapper.appendChild(slide);
 
-        // Ranking
+      
         const row = document.createElement('tr');
         row.innerHTML = `
           <td class="td1">${produto.nome}</td>
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     montarSlidesEranking(data.produtos);
 
-    // Inicializa Swiper
+ 
     const swiper = new Swiper('#swiper-inicial', {
       slidesPerView: 'auto',
       centeredSlides: true,

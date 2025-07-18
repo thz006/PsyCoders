@@ -8,7 +8,7 @@ $action = $_GET['action'] ?? '';
 $votacao = new VotacaoModel();
 
 $resultado = $votacao->getAllEnquetes();
-// print_r($resultado);
+
 
 if ($resultado) {
     echo json_encode($resultado);

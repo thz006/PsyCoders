@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageText = document.getElementById('messageText');
     const closeButton = document.getElementById('closeMessageBox');
 
-    // Função para mostrar mensagens
+   
     function showMessage(message, isSuccess = false) {
         if (!messageBox || !messageText) {
             alert(message);
@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // Fecha manualmente a caixa de mensagem
+    
     if (closeButton) {
         closeButton.addEventListener('click', () => {
             messageBox.style.display = 'none';
         });
     }
 
-    // Lógica principal do formulário
+   
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = form.querySelector('input[name="password"]').value;
             const confirmPassword = form.querySelector('input[name="confirm_password"]').value;
 
-            // Validações
+            
             if (!username || !email || !password || !confirmPassword) {
                 showMessage('Preencha todos os campos.');
                 return;
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Envia os dados
+        
             try {
                 const response = await fetch('../../App/Controller/CadastroController.php', {
                     method: 'POST',

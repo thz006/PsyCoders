@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
   });
 
-  // Clica fora e fecha o menu
+
   document.addEventListener('click', function(event) {
     if (!burguer.contains(event.target) && !menu.contains(event.target)) {
       menu.style.display = 'none';

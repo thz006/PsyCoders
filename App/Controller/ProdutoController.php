@@ -10,19 +10,19 @@ try {
         case 'create':
             $dadosFormulario = $_POST;
 
-            // Pega o ID do funcionário logado pela session
+            
             $dadosFormulario['criado_por'] = $_SESSION['funcionario']['id'] ?? null;
 
             if (!$dadosFormulario['criado_por']) {
                 throw new Exception('Usuário não autenticado.');
             }
 
-            // Adiciona a imagem ao array, se existir
+            
             if (isset($_FILES['imagem_produto'])) {
                 $dadosFormulario['imagem_produto'] = $_FILES['imagem_produto'];
             }
 
-            // Cria o objeto Produto com os dados
+            
             $produto = new Produto($dadosFormulario);
 
             if ($produto->create($_FILES['imagem_produto'] ?? null)) {

@@ -1,5 +1,6 @@
-
+create database psycoders;
 use psycoders;
+
 CREATE TABLE `Funcionarios` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT,
 	`Nome` VARCHAR(255) NOT NULL,
@@ -8,7 +9,7 @@ CREATE TABLE `Funcionarios` (
 	PRIMARY KEY(`id`)
 );
 
-CREATE TABLE `Users` (
+CREATE TABLE `Usuario` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT,
 	`Nome` VARCHAR(255) NOT NULL,
 	`Email` VARCHAR(255) NOT NULL UNIQUE,
@@ -28,12 +29,8 @@ CREATE TABLE `Produtos` (
     FOREIGN KEY(`criado_por`) REFERENCES `Funcionarios`(`id`) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 INSERT INTO Funcionarios (Nome, Email, Senha) 
-VALUES ('Admin Padrão', 'admin@teste.com', 'senha_temporaria');
+VALUES ('Admin Padrão', 'admin@teste.com', 'adm123');
 
-select * from funcionarios;
-select * from produtos;
-select * from votacoes;
-select * from votacoes_produtos;
 CREATE TABLE `Votacoes` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT,
 	`titulo` VARCHAR(255) NOT NULL,
@@ -65,3 +62,8 @@ CREATE TABLE `Votos` (
     FOREIGN KEY(`id_usuario`) REFERENCES `Usuario`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT `uq_usuario_por_votacao` UNIQUE (`id_usuario`, `id_votacoes`)
 );
+select * from usuario;
+select * from funcionarios;
+select * from produtos;
+select * from votacoes;
+select * from votacoes_produtos;

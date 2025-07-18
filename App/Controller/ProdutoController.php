@@ -1,28 +1,33 @@
 <?php
 require_once __DIR__ . '/../Model/Produto.php';
-
-
+session_start();
 header('Content-Type: application/json');
 
-
 $action = $_GET['action'] ?? '';
-
 
 try {
     switch ($action) {
         case 'create':
+            $dadosFormulario = $_POST;
 
-            $produto = new Produto($_POST);
+            // Pega o ID do funcionário logado pela session
+            $dadosFormulario['criado_por'] = $_SESSION['funcionario']['id'] ?? null;
 
+            if (!$dadosFormulario['criado_por']) {
+                throw new Exception('Usuário não autenticado.');
+            }
 
-            $produto->criado_por = 1;
+            // Adiciona a imagem ao array, se existir
+            if (isset($_FILES['imagem_produto'])) {
+                $dadosFormulario['imagem_produto'] = $_FILES['imagem_produto'];
+            }
 
+            // Cria o objeto Produto com os dados
+            $produto = new Produto($dadosFormulario);
 
             if ($produto->create($_FILES['imagem_produto'] ?? null)) {
-
                 echo json_encode(['status' => 'success', 'message' => 'Produto criado com sucesso!']);
             } else {
-
                 throw new Exception('Não foi possível inserir o produto no banco de dados.');
             }
             break;
@@ -34,9 +39,7 @@ try {
 
         case 'delete':
             $id = $_POST['id'] ?? 0;
-            if (!$id) {
-                throw new Exception('ID do produto não fornecido.');
-            }
+            if (!$id) throw new Exception('ID do produto não fornecido.');
 
             if (Produto::delete($id)) {
                 echo json_encode(['status' => 'success', 'message' => 'Produto excluído com sucesso!']);
@@ -44,18 +47,13 @@ try {
                 throw new Exception('Produto não encontrado ou não pôde ser excluído.');
             }
             break;
+
         case 'update':
             $id = $_POST['id'] ?? null;
-
-            if (!$id) {
-                throw new Exception('ID do produto não fornecido.');
-            }
+            if (!$id) throw new Exception('ID do produto não fornecido.');
 
             $produto = Produto::findById($id);
-
-            if (!$produto) {
-                throw new Exception('Produto não encontrado.');
-            }
+            if (!$produto) throw new Exception('Produto não encontrado.');
 
             $dadosAtualizados = [
                 'nome_produto' => $_POST['nome_produto'] ?? '',
@@ -70,7 +68,6 @@ try {
             } else {
                 throw new Exception('Erro ao atualizar o produto.');
             }
-
             break;
 
         default:
@@ -85,21 +82,3 @@ try {
     http_response_code(400);
     echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
 }
-
-// $dadosFormulario = $_POST;
-            
-            // session_start();
-            // $dadosFormulario['criado_por'] = $_SESSION['id_funcionario'] ?? 1; 
-            
-            // if (isset($_FILES['imagem_produto'])) {
-            //     $dadosFormulario['imagem_produto'] = $_FILES['imagem_produto'];
-            // }
-
-            // $produto = new Produto($_POST);
-
-            // if ($produto->create($_FILES['imagem_produto'] ?? null)) {
-            //     echo json_encode(['status' => 'success', 'message' => 'Produto criado com sucesso!']);
-            // } else {
-            //     throw new Exception('Não foi possível inserir o produto no banco de dados.');
-            // }
-            // break;

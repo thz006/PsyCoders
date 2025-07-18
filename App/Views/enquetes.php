@@ -1,11 +1,11 @@
 <?php include '../../Public/includes/header.php';
-include '../../App/Model/User.php'; 
+include '../../App/Model/Usuario.php'; 
 session_start();
 
 
-if (!isset($_SESSION['cliente'])) {
-header('Location: telaInicial.php');
-exit();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: telaInicial.php');
+    exit();
 }
 
 ?>
@@ -27,7 +27,7 @@ exit();
 	</div>
 
     <div class="menu-dropdown" id="menuDropdown">
-      <p class="menu-username">Olá, <span id="nomeUsuario"><?php echo $_SESSION['username']; ?></span></p>
+      <p class="menu-username">Olá, <span id="nomeUsuario"><?php echo $_SESSION['usuario']['username']; ?></span></p>
       <button onclick="window.location.href='../Controller/logout.php'">Sair</button>
     </div>
 
@@ -40,62 +40,6 @@ exit();
         </div>
 
         <div class="enquetes-container" id="carregarEnquetes">
-
-            <!-- <div class="enquete-card">
-                <h1>Top da Semana</h1>
-                <div class="enquete-info">
-                    <p>Até 18 de julho</p>
-                    <p>3 opções</p>
-                </div>
-            </div>
-
-
-            <div class="enquete-card">
-                <h1>Qual sua bebida favorita?</h1>
-                <div class="enquete-info">
-                    <p>Até 31 de julho</p>
-                    <p>8 opções</p>
-                </div>
-            </div>
-
-            <div class="enquete-card">
-                <h1>Melhores unidades</h1>
-                <div class="enquete-info">
-                    <p>Até 31 de agosto</p>
-                    <p>5 opções</p>
-                </div>
-            </div>
-
-            <div class="enquete-card">
-                <h1>Top da Semana</h1>
-                <div class="enquete-info">
-                    <p>Até 18 de julho</p>
-                    <p>3 opções</p>
-                </div>
-            </div>
-            
-            <div class="enquete-card">
-                <h1>Promoções Especiais</h1>
-                <div class="enquete-info">
-                    <p>Até 31 de julho</p>
-                    <p>4 opções</p>
-                </div>
-            </div>
-
-            <div class="enquete-card">
-                <h1>Como você conheceu nosso site?</h1>
-                <div class="enquete-info">
-                    <p></p>
-                    <p>6 opções</p>
-                </div>
-            </div> -->
-          
-            <!-- <div class="enquete-pagination">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-            </div> -->
-
         </div>
         <h1 style="text-align: center;" id="erroRequisicao">Não há enquetes no momento</h1>
 

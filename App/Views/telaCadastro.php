@@ -16,7 +16,7 @@ include __DIR__.'/../../Public/includes/header.php';
         <h1 class="task001-title">Cadastrar</h1>
         <h2 class="task001-subtitle">Crie uma conta para ter tudo que
         você precisa, na hora que você quer</h2>
-        <form class="task001-container-inputs">
+        <form class="task001-container-inputs" method="post">
             <div class="task001-input-box">
                 <i class="fa-solid fa-user task001-input-icon"></i>
                 <input type="text" name="username" class="task001-inputs" placeholder="Usuário" required>

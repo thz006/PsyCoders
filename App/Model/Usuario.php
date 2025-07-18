@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../DB/Database.php';
 
-class User {
+class Usuario {
     public ?int $id = null;
     public string $username = '';
     public string $email = '';
@@ -23,7 +23,7 @@ class User {
      * @return bool
      */
     public function create(): bool {
-        $db = new Database('users');
+        $db = new Database('Usuario');
 
         $values = [
             'Nome'   => htmlspecialchars(strip_tags($this->username)),
@@ -54,7 +54,7 @@ class User {
             return false;
         }
 
-        $db = new Database('users');
+        $db = new Database('Usuario');
 
         $values = [
             'Nome' => htmlspecialchars(strip_tags($this->username)),
@@ -79,7 +79,7 @@ class User {
      * @return self|null
      */
     public static function findById(int $id): ?self {
-        $db = new Database('users');
+        $db = new Database('Usuario');
         try {
             $stmt = $db->select("id = ?", [$id], null, '1'); 
             $dados = $stmt->fetch(PDO::FETCH_ASSOC); 
@@ -95,7 +95,7 @@ class User {
      * @return self|null
      */
     public static function findByEmail(string $email): ?self {
-        $db = new Database('users');
+        $db = new Database('Usuario');
         try {
             $stmt = $db->select("email = ?", [htmlspecialchars(strip_tags($email))], null, '1');
             $dados = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -111,7 +111,7 @@ class User {
      * @return bool True if the email exists, false otherwise.
      */
     public static function emailExists(string $email): bool {
-        $db = new Database('users');
+        $db = new Database('Usuario');
         try {
             $stmt = $db->select("email = ?", [htmlspecialchars(strip_tags($email))], null, null, 'COUNT(*) as count');
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -127,7 +127,7 @@ class User {
      * @return bool True if the user was deleted successfully, false otherwise.
      */
     public static function delete(int $id): bool {
-        $db = new Database('users');
+        $db = new Database('Usuario');
         try {
             return $db->delete("id = ?", [$id]);
         } catch (PDOException $e) {
@@ -158,7 +158,7 @@ class User {
     }
 
     public static function getUser(int $id): ?array {
-        $db = new Database('users');
+        $db = new Database('Usuario');
         try {
             $stmt = $db->select("id = ?", [$id], null, '1');
             $dados = $stmt->fetch(PDO::FETCH_ASSOC);

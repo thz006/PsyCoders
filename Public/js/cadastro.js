@@ -1,80 +1,91 @@
-// Public/js/cadastro.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const cadastroForm = document.querySelector('.task001-container-inputs');
+    
+    const form = document.querySelector('.task001-container-inputs');
     const messageBox = document.getElementById('messageBox');
     const messageText = document.getElementById('messageText');
-    const closeMessageBox = document.getElementById('closeMessageBox');
+    const closeButton = document.getElementById('closeMessageBox');
 
+    // Função para mostrar mensagens
     function showMessage(message, isSuccess = false) {
-        if (messageText && messageBox) {
-            messageText.textContent = message;
-            messageBox.style.backgroundColor = isSuccess ? '#4CAF50' : '#f44336';
-            messageBox.classList.add('show');
-            messageBox.style.display = 'block';
-            setTimeout(() => {
-                messageBox.classList.remove('show');
-                setTimeout(() => {
-                    messageBox.style.display = 'none';
-                }, 300);
-            }, 5000);
-        } else {
+        if (!messageBox || !messageText) {
             alert(message);
+            return;
         }
+
+        messageText.textContent = message;
+        messageBox.style.backgroundColor = isSuccess ? '#4CAF50' : '#f44336';
+        messageBox.style.display = 'block';
+
+        setTimeout(() => {
+            messageBox.style.display = 'none';
+        }, 5000);
     }
 
-    if (closeMessageBox) {
-        closeMessageBox.addEventListener('click', () => {
-            messageBox.classList.remove('show');
-            setTimeout(() => {
-                messageBox.style.display = 'none';
-            }, 300);
+    // Fecha manualmente a caixa de mensagem
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            messageBox.style.display = 'none';
         });
     }
 
-    if (cadastroForm) {
-        cadastroForm.addEventListener('submit', async (e) => {
+    // Lógica principal do formulário
+    if (form) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const username = document.querySelector('input[name="username"]').value.trim();
-            const email = document.querySelector('input[name="email"]').value.trim();
-            const password = document.querySelector('input[name="password"]').value;
-            const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
 
+            const username = form.querySelector('input[name="username"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const password = form.querySelector('input[name="password"]').value;
+            const confirmPassword = form.querySelector('input[name="confirm_password"]').value;
+
+            // Validações
             if (!username || !email || !password || !confirmPassword) {
-                showMessage('Por favor, preencha todos os campos.');
-                return;
-            }
-            // Validação de senha forte
-            const senhaForteRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':\\"|,.<>\/?]).{8,}$/;
-            if (!senhaForteRegex.test(password)) {
-                showMessage('A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, uma minúscula, um número e um caractere especial.');
-                return;
-            }
-            if (password !== confirmPassword) {
-                showMessage('As senhas não coincidem!');
+                showMessage('Preencha todos os campos.');
                 return;
             }
 
+            const senhaForte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+            if (!senhaForte.test(password)) {
+                showMessage('A senha deve ter no mínimo 8 caracteres, incluindo: letra maiúscula, minúscula, número e caractere especial.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showMessage('As senhas não coincidem.');
+                return;
+            }
+
+            // Envia os dados
             try {
-                const response = await fetch('/PsyCoders/App/Controller/AuthController.php?action=register', {
+                const response = await fetch('../../App/Controller/CadastroController.php', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, email, password, confirm_password: confirmPassword })
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username,
+                        email,
+                        password,
+                        confirm_password: confirmPassword
+                    })
                 });
-                const data = await response.json();
-                if (response.ok && data.success) {
-                    showMessage(data.message, true);
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    showMessage(result.message, true);
                     setTimeout(() => {
                         window.location.href = 'telaLogin.php';
                     }, 1500);
                 } else {
-                    showMessage(data.message || 'Erro ao cadastrar.');
+                    showMessage(result.message || 'Erro ao cadastrar.');
                 }
             } catch (error) {
-                showMessage('Erro de conexão com o servidor.');
+                console.error(error);
+                showMessage('Erro ao conectar com o servidor.');
             }
         });
     } else {
         console.warn('Formulário de cadastro não encontrado.');
     }
-}); 
+});

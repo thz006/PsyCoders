@@ -24,10 +24,12 @@ include __DIR__.'/../../Public/includes/header.php';
                 <input type="password" name="password" class="task001-inputs" placeholder="Senha" required>
             </div>
 
-            <button type="submit" class="botao-lg">Entrar</button>
+            <button type="button" id="btnUsuario" class="botao-lg">Entrar Como Usuário</button>
+            <button type="button" class="botao-lg botao-funcionario" id="btnFuncionario">Entrar Como Funcionário</button>
         </form>
         <h2 class="task001-ja-possui-conta">Não tem uma conta?<a href="telaCadastro.php" class="task001-ir-para-login">Cadastre-se.</a></h2>
     </div>
-    <script src="../../Public/js/login.js"></script>
+    <script src="../../Public/js/loginUsuario.js"></script>
+    <script src="../../Public/js/loginFuncionario.js"></script>
 </body>
 </html>

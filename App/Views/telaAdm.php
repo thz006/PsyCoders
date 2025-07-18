@@ -4,10 +4,10 @@
     $produtos = Produto::findAll();
     $votacoes = VotacaoModel::findAllWithProducts();
     session_start();
-//         if (!isset($_SESSION['user_id'])) {
-//     header('Location: telaInicial.php');
-//     exit();
-// }
+    if (!isset($_SESSION['funcionario'])) {
+        header('Location: telaInicial.php');
+    exit();
+}
 ?>
 
 
